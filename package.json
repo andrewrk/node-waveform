@@ -1,6 +1,6 @@
 {
   "name": "waveform",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "simultaneously transcode audio and generate visuals",
   "keywords": [
     "fast",
