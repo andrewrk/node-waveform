@@ -28,6 +28,11 @@ static int png_frames_until_emit;
 static FILE *transcode_out_f = NULL;
 static struct GrooveEncoder *encoder = NULL;
 
+static int version() {
+    printf("2.0.0\n");
+    return 0;
+}
+
 static int usage(const char *exe) {
     fprintf(stderr, "\
 \n\
@@ -141,6 +146,7 @@ int main(int argc, char * argv[]) {
 
     int wjs_width = 800;
     int wjs_precision = 4;
+    int wjs_plain = 0;
 
     int scan = 0;
 
@@ -151,6 +157,10 @@ int main(int argc, char * argv[]) {
             arg += 2;
             if (strcmp(arg, "scan") == 0) {
                 scan = 1;
+            } else if (strcmp(arg, "wjs-plain") == 0) {
+                wjs_plain = 1;
+            } else if (strcmp(arg, "version") == 0) {
+                return version();
             } else if (i + 1 >= argc) {
                 // args that take 1 parameter
                 return usage(exe);
@@ -398,6 +408,12 @@ int main(int argc, char * argv[]) {
         wjs_frames_per_pixel = frame_count / wjs_width;
         if (wjs_frames_per_pixel < 1)
             wjs_frames_per_pixel = 1;
+
+        if (!wjs_plain) {
+            fprintf(waveformjs_f, "{\"frameCount\":%d,\"frameRate\":%d, \"waveformjs\":",
+                    frame_count, 44100);
+        }
+
         fprintf(waveformjs_f, "[");
 
         wjs_max_sample = INT16_MIN;
@@ -469,6 +485,10 @@ int main(int argc, char * argv[]) {
         }
 
         fprintf(waveformjs_f, "]");
+
+        if (!wjs_plain)
+            fprintf(waveformjs_f, "}");
+
         fclose(waveformjs_f);
     }
 
