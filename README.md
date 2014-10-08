@@ -22,27 +22,31 @@ var waveform = require('waveform');
 
 waveform(audiofile, {
   // options
-  'scan': false,             // whether to do a pass to detect duration
+  'scan': false,                  // whether to do a pass to detect duration
+
   // transcoding options
-  transcode: "outputfile.mp3", // required
-  bitrate: 320,
-  format: "name",
-  codec: "name",
-  mime: "mimetype",
-  'tag-artist': "artistname",
-  'tag-title': "title",
-  'tag-year': 2000,
-  'tag-comment': "comment",
+  transcode: "outputfile.mp3",    // required
+  bitrate: 320,                   // audio bitrate in kbps
+  format: "name",                 // e.g. mp3, ogg, mp4
+  codec: "name",                  // e.g. mp3, vorbis, flac, aac
+  mime: "mimetype",               // e.g. audio/vorbis
+  'tag-artist': "artistname",     // artist tag
+  'tag-title': "title",           // title tag
+  'tag-year': 2000,               // year tag
+  'tag-comment': "comment",       // comment tag
 
   // waveform.js options
+  'wjs-width': 800,               // width in samples
+  'wjs-precision': 4,             // how many digits of precision
+  'wjs-plain': false,             // exclude metadata in output JSON (default off)
 
   // png options
-  width: 256,                // width of the image
-  height: 64,                // height of the image
-  'color-bg': '00000000',    // bg color, rrggbbaa
-  'color-center': '000000ff',// gradient center color, rrggbbaa
-  'color-outer': '000000ff', // gradient outer color, rrggbbaa
-}, function(err) {
+  'png-width': 256,               // width of the image
+  'png-height': 64,               // height of the image
+  'png-color-bg': '00000000',     // bg color, rrggbbaa
+  'png-color-center': '000000ff', // gradient center color, rrggbbaa
+  'png-color-outer': '000000ff',  // gradient outer color, rrggbbaa
+}, function(err, stdout) {
   // done
 });
 ```
