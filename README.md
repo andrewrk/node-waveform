@@ -17,7 +17,8 @@ go to the waveform repository.
 
 ## Usage
 
-One of the options `transcode`, `waveformjs` or `png` is required as output destination.
+At least one of the options `transcode`, `waveformjs` or `png` is required as
+output destination.
 
 ```js
 var waveform = require('waveform');
