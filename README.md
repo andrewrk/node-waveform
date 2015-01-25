@@ -17,6 +17,8 @@ go to the waveform repository.
 
 ## Usage
 
+One of the options `transcode`, `waveformjs` or `png` is required as output destination.
+
 ```js
 var waveform = require('waveform');
 
@@ -25,7 +27,7 @@ waveform(audiofile, {
   'scan': false,                  // whether to do a pass to detect duration
 
   // transcoding options
-  transcode: "outputfile.mp3",    // required
+  transcode: "outputfile.mp3",    // path to output-file or - for stdout
   bitrate: 320,                   // audio bitrate in kbps
   format: "name",                 // e.g. mp3, ogg, mp4
   codec: "name",                  // e.g. mp3, vorbis, flac, aac
@@ -36,11 +38,13 @@ waveform(audiofile, {
   'tag-comment': "comment",       // comment tag
 
   // waveform.js options
+  waveformjs: "outputfile.json",  // path to output-file or - for stdout
   'wjs-width': 800,               // width in samples
   'wjs-precision': 4,             // how many digits of precision
   'wjs-plain': false,             // exclude metadata in output JSON (default off)
 
   // png options
+  png: "outputfile.png",          // path to output-file or - for stdout
   'png-width': 256,               // width of the image
   'png-height': 64,               // height of the image
   'png-color-bg': '00000000',     // bg color, rrggbbaa
