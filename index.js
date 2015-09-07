@@ -19,7 +19,7 @@ module.exports = function(audiofile, options, callback) {
     }
   }
 
-  execFile(waveformBin, cmdline, function(err, stdout, stderr) {
+  execFile(waveformBin, cmdline, {encoding: 'buffer', maxBuffer: 5000*1024}, function(err, stdout, stderr) {
     if (err) {
       err.stdout = stdout;
       err.stderr = stderr;

@@ -28,7 +28,7 @@ waveform(audiofile, {
   'scan': false,                  // whether to do a pass to detect duration
 
   // transcoding options
-  transcode: "outputfile.mp3",    // path to output-file or - for stdout
+  transcode: "outputfile.mp3",    // path to output-file, or - for stdout as a Buffer
   bitrate: 320,                   // audio bitrate in kbps
   format: "name",                 // e.g. mp3, ogg, mp4
   codec: "name",                  // e.g. mp3, vorbis, flac, aac
@@ -39,19 +39,19 @@ waveform(audiofile, {
   'tag-comment': "comment",       // comment tag
 
   // waveform.js options
-  waveformjs: "outputfile.json",  // path to output-file or - for stdout
+  waveformjs: "outputfile.json",  // path to output-file, or - for stdout as a Buffer
   'wjs-width': 800,               // width in samples
   'wjs-precision': 4,             // how many digits of precision
   'wjs-plain': false,             // exclude metadata in output JSON (default off)
 
   // png options
-  png: "outputfile.png",          // path to output-file or - for stdout
+  png: "outputfile.png",          // path to output-file, or - for stdout as a Buffer
   'png-width': 256,               // width of the image
   'png-height': 64,               // height of the image
   'png-color-bg': '00000000',     // bg color, rrggbbaa
   'png-color-center': '000000ff', // gradient center color, rrggbbaa
   'png-color-outer': '000000ff',  // gradient outer color, rrggbbaa
-}, function(err, stdout) {
+}, function(err, buf) {
   // done
 });
 ```
