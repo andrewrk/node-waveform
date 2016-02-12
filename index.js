@@ -7,11 +7,18 @@ var flagNames = {
   'wjs-plain': true,
 };
 
+var processOptions = {
+  encoding: 'buffer',
+  maxBuffer: 5000 * 1024
+};
+
 module.exports = function(audiofile, options, callback) {
   var cmdline = [audiofile];
   for (var optName in options) {
     if (flagNames[optName]) {
       cmdline.push('--' + optName);
+    } else if (processOptions[optName]){
+      processOptions[optName] = options[optName];
     } else {
       var value = options[optName];
       cmdline.push('--' + optName);
@@ -19,7 +26,7 @@ module.exports = function(audiofile, options, callback) {
     }
   }
 
-  execFile(waveformBin, cmdline, {encoding: 'buffer', maxBuffer: 5000*1024}, function(err, stdout, stderr) {
+  execFile(waveformBin, cmdline, processOptions, function(err, stdout, stderr) {
     if (err) {
       err.stdout = stdout;
       err.stderr = stderr;

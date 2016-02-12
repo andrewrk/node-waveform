@@ -51,6 +51,11 @@ waveform(audiofile, {
   'png-color-bg': '00000000',     // bg color, rrggbbaa
   'png-color-center': '000000ff', // gradient center color, rrggbbaa
   'png-color-outer': '000000ff',  // gradient outer color, rrggbbaa
+
+  // node-specific options
+  encoding: "utf8",               // different output encoding for callback (default is 'buffer')
+  maxBuffer: 1024 * 1000          // max buffer before the process is killed (default is 1024 * 5000)
+
 }, function(err, buf) {
   // done
 });
